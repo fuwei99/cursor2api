@@ -9,7 +9,20 @@
 
 ## 一键部署
 
-[![Deploy to Hugging Face Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/deploy-to-spaces-sm.svg)](https://huggingface.co/spaces/new?template=fuwei99/cursor2api)
+请按照以下步骤在 Hugging Face 上部署：
+
+1. 访问 [Hugging Face Spaces](https://huggingface.co/spaces)
+2. 点击 "Create new Space"
+3. 填写以下信息：
+   - Space 名称：如 "cursor2api"
+   - 可见性：Public 或 Private
+   - 许可证：MIT
+   - SDK：Docker
+   - Hardware：CPU
+4. 创建 Space 后，进入 Settings 标签页
+5. 在 "Repository" 部分，点击 "Connect to a GitHub Repository"
+6. 输入仓库地址 `fuwei99/cursor2api`
+7. 点击 "Connect" 按钮
 
 ## 使用前准备
 
@@ -31,11 +44,6 @@
 
 
 ## 运行和部署
-
-### Hugging Face部署
-1. 点击上方的一键部署按钮
-2. 填写Space名称、描述并选择MIT许可证
-3. 等待部署完成
 
 ### Docker 部署
 
