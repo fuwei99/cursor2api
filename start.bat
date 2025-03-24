@@ -28,7 +28,7 @@ set PORT=3010
 
 REM Start the service
 echo Service is starting, please wait...
-start "" npm start
+npm start
 
 REM Wait for service to start
 echo Waiting for service to start...

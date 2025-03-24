@@ -26,18 +26,24 @@ app.use(morgan(process.env.MORGAN_FORMAT ?? 'tiny'));
 
 // 会话中间件
 app.use(session({
-    secret: config.sessionSecret,
+    secret: process.env.SESSION_SECRET || config.sessionSecret,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: process.env.NODE_ENV === 'production' }
+    cookie: { 
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: 'lax'
+    }
 }));
 
 // 路由
 app.use("/", routes);
 
+// 使用环境变量端口
+const port = process.env.PORT || config.port;
+
 // 启动服务器
-app.listen(config.port, () => {
-    console.log(`服务器已启动，监听端口: ${config.port}`);
-    console.log(`管理界面: http://localhost:${config.port}/admin`);
+app.listen(port, () => {
+    console.log(`服务器已启动，监听端口: ${port}`);
+    console.log(`管理界面: http://localhost:${port}/admin`);
     console.log(`默认密码: ${config.defaultPassword}`);
 });

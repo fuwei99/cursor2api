@@ -18,13 +18,11 @@
   },
   "scripts": {
     "proto": "npx pbjs -t static-module -w commonjs -o src/proto/message.js src/proto/message.proto",
-    "start": "node src/app.js",
-    "deploy:cf": "node deploy-to-cloudflare.js",
-    "cf:dev": "wrangler dev",
-    "cf:publish": "wrangler publish"
+    "start": "node src/app.js"
+
   },
   "devDependencies": {
-    "protobufjs-cli": "^1.1.3",
-    "wrangler": "^3.33.0"
+    "protobufjs-cli": "^1.1.3"
   }
+
 }

@@ -1,0 +1,142 @@
+{
+  "models": [
+    {
+      "id": "claude-3-opus",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "anthropic"
+    },
+    {
+      "id": "claude-3.5-haiku",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "anthropic"
+    },
+    {
+      "id": "claude-3.5-sonnet",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "anthropic"
+    },
+    {
+      "id": "claude-3.7-sonnet",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "anthropic"
+    },
+    {
+      "id": "claude-3.7-sonnet-max",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "anthropic"
+    },
+    {
+      "id": "cursor-fast",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "cursor"
+    },
+    {
+      "id": "cursor-small",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "cursor"
+    },
+    {
+      "id": "deepseek-r1",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "deepseek"
+    },
+    {
+      "id": "deepseek-v3",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "deepseek"
+    },
+    {
+      "id": "gemini-2.0-flash",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "google"
+    },
+    {
+      "id": "gemini-2.0-flash-thinking-exp",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "google"
+    },
+    {
+      "id": "gemini-2.0-pro-exp",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "google"
+    },
+    {
+      "id": "gpt-3.5-turbo",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "openai"
+    },
+    {
+      "id": "gpt-4",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "openai"
+    },
+    {
+      "id": "gpt-4-turbo-2024-04-09",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "openai"
+    },
+    {
+      "id": "gpt-4.5-preview",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "openai"
+    },
+    {
+      "id": "gpt-4o",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "openai"
+    },
+    {
+      "id": "gpt-4o-mini",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "openai"
+    },
+    {
+      "id": "grok-2",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "x"
+    },
+    {
+      "id": "o1",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "o1"
+    },
+    {
+      "id": "o1-mini",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "o1"
+    },
+    {
+      "id": "o1-preview",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "o1"
+    },
+    {
+      "id": "o3-mini",
+      "created": 1742812253604,
+      "object": "model",
+      "owned_by": "o1"
+    }
+  ]
+}

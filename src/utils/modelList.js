@@ -7,40 +7,40 @@ const MODEL_FILE = path.join(__dirname, '../../data/models.json');
 // 默认模型列表
 const defaultModels = [
     {
-        id: 'claude-3-5-sonnet-20241022',
-        created: Date.now(),
-        object: 'model',
-        owned_by: 'anthropic'
-    },
-    {
         id: 'claude-3-opus',
         created: Date.now(),
         object: 'model',
         owned_by: 'anthropic'
     },
     {
-        id: 'claude-3-5-haiku',
+        id: 'claude-3.5-haiku',
         created: Date.now(),
         object: 'model',
         owned_by: 'anthropic'
     },
     {
-        id: 'claude-3-5-sonnet',
+        id: 'claude-3.5-sonnet',
         created: Date.now(),
         object: 'model',
         owned_by: 'anthropic'
     },
     {
-        id: 'claude-3-7-sonnet',
+        id: 'claude-3.7-sonnet',
         created: Date.now(),
         object: 'model',
         owned_by: 'anthropic'
     },
     {
-        id: 'claude-3-7-sonnet-thinking',
+        id: 'claude-3.7-sonnet-max',
         created: Date.now(),
         object: 'model',
         owned_by: 'anthropic'
+    },
+    {
+        id: 'cursor-fast',
+        created: Date.now(),
+        object: 'model',
+        owned_by: 'cursor'
     },
     {
         id: 'cursor-small',
@@ -49,19 +49,31 @@ const defaultModels = [
         owned_by: 'cursor'
     },
     {
-        id: 'gemini-exp-1206',
+        id: 'deepseek-r1',
         created: Date.now(),
         object: 'model',
-        owned_by: 'google'
+        owned_by: 'deepseek'
     },
     {
-        id: 'gemini-2.0-flash-exp',
+        id: 'deepseek-v3',
+        created: Date.now(),
+        object: 'model',
+        owned_by: 'deepseek'
+    },
+    {
+        id: 'gemini-2.0-flash',
         created: Date.now(),
         object: 'model',
         owned_by: 'google'
     },
     {
         id: 'gemini-2.0-flash-thinking-exp',
+        created: Date.now(),
+        object: 'model',
+        owned_by: 'google'
+    },
+    {
+        id: 'gemini-2.0-pro-exp',
         created: Date.now(),
         object: 'model',
         owned_by: 'google'
@@ -79,13 +91,13 @@ const defaultModels = [
         owned_by: 'openai'
     },
     {
-        id: 'gpt-4.5-preview',
+        id: 'gpt-4-turbo-2024-04-09',
         created: Date.now(),
         object: 'model',
         owned_by: 'openai'
     },
     {
-        id: 'gpt-4-turbo-2024-04-09',
+        id: 'gpt-4.5-preview',
         created: Date.now(),
         object: 'model',
         owned_by: 'openai'
@@ -103,6 +115,18 @@ const defaultModels = [
         owned_by: 'openai'
     },
     {
+        id: 'grok-2',
+        created: Date.now(),
+        object: 'model',
+        owned_by: 'x'
+    },
+    {
+        id: 'o1',
+        created: Date.now(),
+        object: 'model',
+        owned_by: 'o1'
+    },
+    {
         id: 'o1-mini',
         created: Date.now(),
         object: 'model',
@@ -110,6 +134,12 @@ const defaultModels = [
     },
     {
         id: 'o1-preview',
+        created: Date.now(),
+        object: 'model',
+        owned_by: 'o1'
+    },
+    {
+        id: 'o3-mini',
         created: Date.now(),
         object: 'model',
         owned_by: 'o1'
