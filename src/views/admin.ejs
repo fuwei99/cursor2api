@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor-To-OpenAI 管理面板</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        h1 {
+            color: #333;
+            margin: 0;
+        }
+        .logout-btn {
+            padding: 0.5rem 1rem;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            color: #444;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 0.75rem 1.5rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .token-list {
+            margin-top: 1.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .delete-btn {
+            padding: 0.4rem 0.8rem;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background-color: #d32f2f;
+        }
+        .message {
+            background-color: #e7f3fe;
+            border-left: 4px solid #2196F3;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            color: #0c5460;
+        }
+        .model-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .model-item {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 0.75rem;
+            position: relative;
+        }
+        .model-name {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        .model-provider {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+        .tab.active {
+            border-bottom: 2px solid #4CAF50;
+            font-weight: bold;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .rotation-status {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .rotation-status h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #e9ecef;
+        }
+        .status-label {
+            font-weight: bold;
+            color: #495057;
+        }
+        .status-value {
+            color: #6c757d;
+        }
+        .current-token {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .next-token {
+            color: #fd7e14;
+            font-weight: bold;
+        }
+        .model-delete-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .model-delete-btn:hover {
+            background-color: #d32f2f;
+        }
+        .model-actions {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .reset-btn {
+            background-color: #ff9800;
+            margin-left: 0.5rem;
+        }
+        .reset-btn:hover {
+            background-color: #f57c00;
+        }
+        .model-form {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .model-form h3 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+        .form-row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-row .form-group {
+            flex: 1;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Cursor-To-OpenAI 管理面板</h1>
+            <a href="/admin/logout" class="logout-btn">退出登录</a>
+        </header>
+        
+        <% if (message) { %>
+            <div class="message"><%= message %></div>
+        <% } %>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('tokens')">JWT 令牌管理</div>
+            <div class="tab" onclick="switchTab('models')">模型列表</div>
+            <div class="tab" onclick="switchTab('password')">密码设置</div>
+        </div>
+        
+        <div id="tokens" class="tab-content active card">
+            <h2>JWT 令牌管理</h2>
+            
+            <% if (tokens.length > 0) { %>
+                <div class="rotation-status">
+                    <h3>令牌轮询状态</h3>
+                    <div class="status-item">
+                        <span class="status-label">总令牌数量:</span>
+                        <span class="status-value"><%= rotationStatus.totalTokens %></span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">当前使用的令牌:</span>
+                        <span class="status-value current-token"><%= rotationStatus.currentToken %></span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">下一个将使用的令牌:</span>
+                        <span class="status-value next-token"><%= rotationStatus.nextToken %></span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">当前索引:</span>
+                        <span class="status-value"><%= rotationStatus.currentIndex %></span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-label">下一个索引:</span>
+                        <span class="status-value"><%= rotationStatus.nextIndex %></span>
+                    </div>
+                </div>
+            <% } %>
+            
+            <form action="/admin/tokens" method="POST">
+                <div class="form-group">
+                    <label for="name">名称</label>
+                    <input type="text" id="name" name="name" required placeholder="为令牌起一个易记的名称">
+                </div>
+                <div class="form-group">
+                    <label for="token">JWT 令牌</label>
+                    <input type="text" id="token" name="token" required placeholder="从 Cursor 获取的 JWT 令牌">
+                </div>
+                <button type="submit">添加令牌</button>
+            </form>
+            
+            <div class="token-list">
+                <h3>已保存的令牌</h3>
+                <% if (tokens.length === 0) { %>
+                    <p>暂无保存的令牌</p>
+                <% } else { %>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>名称</th>
+                                <th>令牌</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% tokens.forEach(function(token, index) { %>
+                                <tr<% if (index === rotationStatus.currentIndex) { %> style="background-color: #e8f5e9;"<% } %>>
+                                    <td>
+                                        <%= token.name %>
+                                        <% if (index === rotationStatus.currentIndex) { %>
+                                            <span style="color: #28a745; font-size: 0.8rem;">(当前)</span>
+                                        <% } else if (index === rotationStatus.nextIndex) { %>
+                                            <span style="color: #fd7e14; font-size: 0.8rem;">(下一个)</span>
+                                        <% } %>
+                                    </td>
+                                    <td><%= token.token.substring(0, 20) %>...</td>
+                                    <td>
+                                        <form action="/admin/tokens/delete" method="POST" style="display: inline;">
+                                            <input type="hidden" name="name" value="<%= token.name %>">
+                                            <button type="submit" class="delete-btn">删除</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                <% } %>
+            </div>
+        </div>
+        
+        <div id="models" class="tab-content card">
+            <h2>模型列表管理</h2>
+            
+            <div class="model-form">
+                <h3>添加新模型</h3>
+                <form action="/admin/models" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="modelId">模型ID</label>
+                            <input type="text" id="modelId" name="modelId" required placeholder="例如: gpt-4, claude-3-opus">
+                        </div>
+                        <div class="form-group">
+                            <label for="provider">提供商</label>
+                            <input type="text" id="provider" name="provider" required placeholder="例如: openai, anthropic, google">
+                        </div>
+                    </div>
+                    <button type="submit">添加模型</button>
+                </form>
+            </div>
+            
+            <p>当前支持的模型列表：</p>
+            
+            <div class="model-list">
+                <% models.forEach(function(model) { %>
+                    <div class="model-item">
+                        <form action="/admin/models/delete" method="POST">
+                            <input type="hidden" name="modelId" value="<%= model.id %>">
+                            <button type="submit" class="model-delete-btn" title="删除模型">×</button>
+                        </form>
+                        <div class="model-name"><%= model.id %></div>
+                        <div class="model-provider">提供商: <%= model.owned_by %></div>
+                    </div>
+                <% }); %>
+            </div>
+            
+            <div class="model-actions">
+                <form action="/admin/models/reset" method="POST">
+                    <button type="submit" class="reset-btn" onclick="return confirm('确定要重置模型列表吗？这将恢复所有默认模型并删除自定义模型。')">重置为默认模型列表</button>
+                </form>
+            </div>
+        </div>
+        
+        <div id="password" class="tab-content card">
+            <h2>修改密码</h2>
+            <p>当前密码: <%= password %></p>
+            <form action="/admin/password" method="POST">
+                <div class="form-group">
+                    <label for="newPassword">新密码</label>
+                    <input type="password" id="newPassword" name="newPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">确认新密码</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+                <button type="submit">更新密码</button>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        function switchTab(tabId) {
+            // 隐藏所有标签内容
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // 取消所有标签的活动状态
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // 显示选定的标签内容
+            document.getElementById(tabId).classList.add('active');
+            
+            // 设置选定标签的活动状态
+            document.querySelector(`.tab[onclick="switchTab('${tabId}')"]`).classList.add('active');
+        }
+    </script>
+</body>
+</html> 
