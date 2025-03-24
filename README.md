@@ -7,6 +7,10 @@
 本项目提供了一个代理服务，可以将 Cursor 编辑器的 AI 能力转换为与 OpenAI API 兼容的接口，让您能够在其他应用中复用 Cursor 的 AI 能力。
 - 支持同时传入多个Cookie，使用多个英文逗号分隔
 
+## 一键部署
+
+[![Deploy to Hugging Face Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/deploy-to-spaces-sm.svg)](https://huggingface.co/spaces/new?template=JiuZ-Chn/Cursor-To-OpenAI)
+
 ## 使用前准备
 
 1. 访问 [www.cursor.com](https://www.cursor.com) 并完成注册登录（赠送 150 次快速响应，可通过删除账号再注册重置）
@@ -14,12 +18,12 @@
 3. 找到 应用-Cookies 中名为 `WorkosCursorSessionToken` 的值并保存(相当于 openai 的密钥)
 
 
-
 ## 接口说明
 
 ### 基础配置
 
-- 接口地址：`http://localhost:3010/v1/chat/completions`
+- 接口地址：`https://your-space-name.hf.space/v1/chat/completions` (Hugging Face部署)
+- 接口地址：`http://localhost:3010/v1/chat/completions` (本地部署)
 - 请求方法：POST
 - 认证方式：Bearer Token（使用 WorkosCursorSessionToken 的值，支持英文逗号分隔的 key 入参）
 
@@ -27,6 +31,11 @@
 
 
 ## 运行和部署
+
+### Hugging Face部署
+1. 点击上方的一键部署按钮
+2. 填写Space名称、描述并选择MIT许可证
+3. 等待部署完成
 
 ### Docker 部署
 

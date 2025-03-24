@@ -1,0 +1,9 @@
+title: Cursor To OpenAI
+sdk: docker
+app_port: 7860
+emoji: 🤖
+colorFrom: blue
+colorTo: green
+pinned: false
+license: mit
+duplicated_from: JiuZ-Chn/Cursor-To-OpenAI 
