@@ -1,3 +1,14 @@
+---
+title: Cursor To OpenAI
+emoji: 🤖
+colorFrom: blue
+colorTo: green
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+---
+
 # Cursor To OpenAI
 
 将 Cursor 编辑器转换为 OpenAI 兼容的 API 接口服务。
