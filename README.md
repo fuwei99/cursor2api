@@ -9,7 +9,7 @@
 
 ## 一键部署
 
-[![Deploy to Hugging Face Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/deploy-to-spaces-sm.svg)](https://huggingface.co/spaces/new?template=fuwei99/cursor2api)
+[![Deploy to Hugging Face Spaces](https://huggingface.co/datasets/huggingface/badges/resolve/main/deploy-to-spaces-sm.svg)](https://huggingface.co/new-space?template=docker&template_repository=https://github.com/fuwei99/cursor2api)
 
 ## 使用前准备
 
